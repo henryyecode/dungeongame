@@ -1,0 +1,39 @@
+package unsw.dungeon;
+
+import java.io.IOException;
+
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+public class MenuScreen {
+	private static Stage stage;
+    private static String title;
+    private MenuController controller;
+    private static Scene scene;
+
+    public MenuScreen(Stage stage) throws IOException {
+        this.stage = stage;
+        title = "Start Screen";
+
+        controller = new MenuController();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("MenuView.fxml"));
+        loader.setController(controller);
+
+        // load into a Parent node called root
+        Parent root = loader.load();
+        scene = new Scene(root);
+    }
+
+    public static void start() {
+        stage.setTitle(title);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public MenuController getController() {
+        return controller;
+    }
+
+}
